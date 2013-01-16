@@ -45,6 +45,7 @@ public class RemoteControlTest {
 		
 		complexRemote.setCommand(0, ceilingFanMedium, ceilingFanOff);
 		complexRemote.setCommand(1, ceilingFanHigh, ceilingFanOff);
+		complexRemote.setCommand(2, ceilingFanLow, ceilingFanOff);
 		
 		complexRemote.onButtonWasPushed(0);
 		complexRemote.offButtonWasPushed(0);
