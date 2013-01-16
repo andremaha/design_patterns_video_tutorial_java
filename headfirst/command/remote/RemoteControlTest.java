@@ -35,6 +35,21 @@ public class RemoteControlTest {
 		complexRemote.onButtonWasPushed(0);
 		complexRemote.onButtonWasPushed(1);
 		complexRemote.offButtonWasPushed(0);
+		
+		CeilingFan ceilingFan = new CeilingFan("Living Room");
+		
+		CeilingFanMediumCommand ceilingFanMedium = new CeilingFanMediumCommand(ceilingFan);
+		CeilingFanLowCommand ceilingFanLow = new CeilingFanLowCommand(ceilingFan);
+		CeilingFanHighCommand ceilingFanHigh = new CeilingFanHighCommand(ceilingFan);
+		CeilingFanOffCommand ceilingFanOff = new CeilingFanOffCommand(ceilingFan);
+		
+		complexRemote.setCommand(0, ceilingFanMedium, ceilingFanOff);
+		complexRemote.setCommand(1, ceilingFanHigh, ceilingFanOff);
+		
+		complexRemote.onButtonWasPushed(0);
+		complexRemote.offButtonWasPushed(0);
+		System.out.println(complexRemote);
+		complexRemote.undoButtonWasPushed();
 	}
 	
 }

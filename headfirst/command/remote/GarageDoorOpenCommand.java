@@ -13,5 +13,11 @@ public class GarageDoorOpenCommand implements Command {
 		garageDoor.lightsOn();
 		garageDoor.stop();
 	}
+	
+	public void undo() {
+		garageDoor.lightOff();
+		garageDoor.down();
+		garageDoor.stop();
+	}
 
 }

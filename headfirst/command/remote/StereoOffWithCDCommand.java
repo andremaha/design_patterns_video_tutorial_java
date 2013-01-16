@@ -5,8 +5,8 @@ package headfirst.command.remote;
  * 
  * 
  * @author	Andrey Esaulov
- * @version 0.1
- * @changed Jan 15, 2013
+ * @version 0.2
+ * @changed Jan 16, 2013
  */
 public class StereoOffWithCDCommand implements Command {
 
@@ -21,6 +21,12 @@ public class StereoOffWithCDCommand implements Command {
 	public void execute() {
 		stereo.ejectCD();
 		stereo.off();
+	}
+	
+	public void undo() {
+		stereo.on();
+		stereo.setCD(cd);
+		stereo.setVolume(11);
 	}
 
 }
