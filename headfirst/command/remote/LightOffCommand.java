@@ -5,8 +5,8 @@ package headfirst.command.remote;
  * It "translates" form the client language execute() into the light language on()
  * 
  * @author	Andrey Esaulov
- * @version 0.1
- * @changed Jan 11, 2013
+ * @version 0.2
+ * @changed Jan 16, 2013
  */
 public class LightOffCommand implements Command {
 
@@ -18,6 +18,10 @@ public class LightOffCommand implements Command {
 	
 	public void execute() {
 		light.off();
+	}
+	
+	public void undo() {
+		light.on();
 	}
 
 }

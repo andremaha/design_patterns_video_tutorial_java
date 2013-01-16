@@ -6,7 +6,7 @@ package headfirst.command.remote;
  * 
  * @author	Andrey Esaulov
  * @version 0.1
- * @changed Jan 11, 2013
+ * @changed Jan 16, 2013
  */
 public class LightOnCommand implements Command {
 
@@ -18,6 +18,10 @@ public class LightOnCommand implements Command {
 	
 	public void execute() {
 		light.on();
+	}
+	
+	public void undo() {
+		light.off();
 	}
 
 }

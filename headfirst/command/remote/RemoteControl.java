@@ -8,13 +8,14 @@ package headfirst.command.remote;
  * On/Off buttons will envoke the execute() methods on the assigned commands.
  * 
  * @author	Andrey Esaulov
- * @version 0.1
- * @changed Jan 15, 2013
+ * @version 0.2
+ * @changed Jan 16, 2013
  */
 public class RemoteControl {
 
 	Command[] onCommands;
 	Command[] offCommands;
+	Command undoCommand;
 	
 	public RemoteControl() {
 		onCommands = new Command[7];
@@ -25,6 +26,7 @@ public class RemoteControl {
 			onCommands[i] = noCommand;
 			offCommands[i] = noCommand;
 		}
+		undoCommand = noCommand;
 	}
 	
 	public void setCommand(int slot, Command onCommand, Command offCommand) {
@@ -34,10 +36,16 @@ public class RemoteControl {
 	
 	public void onButtonWasPushed(int slot) {
 		onCommands[slot].execute();
+		undoCommand = onCommands[slot];
 	}
 	
 	public void offButtonWasPushed(int slot) {
 		offCommands[slot].execute();
+		undoCommand = offCommands[slot];
+	}
+	
+	public void undoButtonWasPushed() {
+		undoCommand.undo();
 	}
 	
 	public String toString() {
@@ -46,6 +54,7 @@ public class RemoteControl {
 		for (int i = 0; i < onCommands.length; i++) {
 			stringBuff.append("[slot " + i + "] " + onCommands[i].getClass().getName() + "\t\t\t" + offCommands[i].getClass().getName() + "\n");
 		}
+		stringBuff.append("[undo] " + undoCommand.getClass().getName() + "\n");
 		return stringBuff.toString();
 	}
 }
